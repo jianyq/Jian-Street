@@ -42,7 +42,6 @@ def get_messages(db: Session, conversation_id: int):
         .all()
     )
 
-
 def calculate_score(db: Session, conversation_id: int) -> float:
     messages = get_messages(db, conversation_id)
     if not messages:
@@ -55,3 +54,4 @@ def calculate_score(db: Session, conversation_id: int) -> float:
         total += len(words)
         hits += sum(1 for w in words if w in positive_words)
     return hits / total if total else 0.0
+

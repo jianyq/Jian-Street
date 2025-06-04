@@ -27,7 +27,6 @@ def create_questionnaire(q: schemas.QuestionnaireCreate, db: Session = Depends(g
     return crud.create_questionnaire(db, q)
 
 
-
 @app.post("/messages/", response_model=schemas.ChatMessage)
 def create_message(msg: schemas.ChatMessageCreate, db: Session = Depends(get_db)):
     return crud.create_message(db, msg)
@@ -40,3 +39,4 @@ def read_messages(conversation_id: int, db: Session = Depends(get_db)):
 @app.get("/score/{conversation_id}")
 def get_score(conversation_id: int, db: Session = Depends(get_db)):
     return {"score": crud.calculate_score(db, conversation_id)}
+

@@ -88,7 +88,7 @@ function App() {
         <input value={chatInput} onChange={e => setChatInput(e.target.value)} />
         <button type="submit">Send</button>
       </form>
-    </div>
+
   );
 }
 
