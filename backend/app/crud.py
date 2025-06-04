@@ -41,3 +41,17 @@ def get_messages(db: Session, conversation_id: int):
         .order_by(models.ChatMessage.timestamp)
         .all()
     )
+
+def calculate_score(db: Session, conversation_id: int) -> float:
+    messages = get_messages(db, conversation_id)
+    if not messages:
+        return 0.0
+    positive_words = {"good", "great", "nice", "happy", "love"}
+    total = 0
+    hits = 0
+    for m in messages:
+        words = m.message.lower().split()
+        total += len(words)
+        hits += sum(1 for w in words if w in positive_words)
+    return hits / total if total else 0.0
+

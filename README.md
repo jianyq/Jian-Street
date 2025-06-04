@@ -27,3 +27,10 @@ npm start
 ```
 
 This will launch the React app which can interact with the FastAPI backend.
+
+## Features
+
+- User registration with a username
+- Submit an initial questionnaire answer
+- Simple chat UI storing messages per conversation
+- Endpoint to calculate a basic positivity score for a conversation

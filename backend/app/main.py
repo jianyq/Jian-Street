@@ -35,3 +35,8 @@ def create_message(msg: schemas.ChatMessageCreate, db: Session = Depends(get_db)
 @app.get("/conversations/{conversation_id}", response_model=list[schemas.ChatMessage])
 def read_messages(conversation_id: int, db: Session = Depends(get_db)):
     return crud.get_messages(db, conversation_id)
+
+@app.get("/score/{conversation_id}")
+def get_score(conversation_id: int, db: Session = Depends(get_db)):
+    return {"score": crud.calculate_score(db, conversation_id)}
+
